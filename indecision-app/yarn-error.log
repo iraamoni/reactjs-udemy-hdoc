@@ -1,0 +1,46 @@
+Arguments: 
+  /usr/local/Cellar/node/12.1.0/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js add babel-preset-react@6.24.1 babel-preset-env1.5.2
+
+PATH: 
+  /Users/suborna/.rbenv/shims:/Users/suborna/homebrew/bin:/Users/suborna/.fastlane/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  12.1.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "indecision-app",
+    "version": "1.0.0",
+    "description": "my very first react project",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Suborna Jahan",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/babel-preset-env1.5.2: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.5.1/libexec/lib/cli.js:65019:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.5.1/libexec/lib/cli.js:132430:22)
+      at Request.emit (events.js:196:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.5.1/libexec/lib/cli.js:133413:10)
+      at Request.emit (events.js:196:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.5.1/libexec/lib/cli.js:133333:12)
+      at Object.onceWrapper (events.js:284:20)
+      at IncomingMessage.emit (events.js:201:15)
+      at endReadableNT (_stream_readable.js:1130:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:17)
