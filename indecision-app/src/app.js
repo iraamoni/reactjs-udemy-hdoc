@@ -15,19 +15,18 @@
         </div>
     );
 
-    var appRoot = document.getElementById('app')
-
+    const appRoot = document.getElementById('app')
     ReactDOM.render(template, appRoot)
 
     //Challenge: 5. Exploring JSX
-        //create a templateTwo var JSX expression
+        //create a templateTwo const JSX expression
         // div 
         // h1 -> your name 
         // p -> age: your age
         // p -> location: your location
         // render templateTwo instead of Template
     
-    var templateTwo = (
+    const templateTwo = (
         <div>
             <h1>Suborna J</h1>
             <p>Age: 27</p>
@@ -35,19 +34,18 @@
         </div>
     );
 
-    var appRoot = document.getElementById('app')
-
+    const appRoot = document.getElementById('app')
     ReactDOM.render(templateTwo, appRoot)
 
     //Tutorial: 6. JSX Expressions
 
-    var user = {
+    const user = {
         name: 'iraamoni',
         age: 27,
         location: 'London, United Kingdom'
     } // using object 
 
-    var templateThree = (
+    const templateThree = (
         <div>
             <h1>{user.name}</h1>
             <p>Age: {user.age}</p>
@@ -55,12 +53,12 @@
         </div>
     );
 
-    var userName = 'Iraamoni';
-    var userAge = 27; 
-    var userLocation = 'London, United Kingdom'
-    // using direct variables 
+    const userName = 'Iraamoni';
+    const userAge = 27; 
+    const userLocation = 'London, United Kingdom'
+    // using direct constables 
 
-    var templateThree = (
+    const templateThree = (
         <div>
             <h1>{userName}</h1>
             <p>Age: {userAge}</p>
@@ -68,7 +66,7 @@
         </div>
     );
 
-    var appRoot = document.getElementById('app')
+    const appRoot = document.getElementById('app')
     ReactDOM.render(templateThree, appRoot)
 
 
@@ -77,24 +75,24 @@
         // use title/subtitle
         //render template
     
-    var userInfo = {
+    const userInfo = {
         title: 'Suborna J',
         subtitle: 'This is a short info about Suborna'
     }
 
-    var templateFour = (
+    const templateFour = (
         <div>
             <h2>Title: {userInfo.title}</h2>
             <h3>Subtitle: {userInfo.subtitle}</h3>
         </div>
     );
     
-    var appRoot = document.getElementById('app')
+    const appRoot = document.getElementById('app')
     ReactDOM.render(templateFour, appRoot)
         
     //Tutorial: 7. Conditional Rendering in JSX
     
-    var userInfo = {
+    const userInfo = {
         title: 'Suborna Jahan',
         subtitle: 'This is a short info about Suborna',
         job: 'UI/UX designer',
@@ -107,7 +105,7 @@
         } 
     }
 
-    var templateFive = (
+    const templateFive = (
         <div>
             <h1>{userInfo.title ? userInfo.title : 'Anonymous'}</h1>
             {getSubtitle(userInfo.subtitle)}
@@ -116,9 +114,38 @@
         </div>
     );
     
-    var appRoot = document.getElementById('app')
+    const appRoot = document.getElementById('app')
     ReactDOM.render(templateFive, appRoot)
     
     //Challenge: 7. Conditional Rendering in JSX
+    
+        //only render the subtitle (and p tag )if the subtitle exists -logical and operator 
+        // render new p tag - if options.length > 0 'here are your option' ' 'no option'
 
+    const app = {
+        title: 'Indecision App',
+        subtitle: 'this is the information of my app',
+        options: ['one', 'two']
+    }
+
+    const template = (
+        <div>
+            <h1>Indecision App</h1> 
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'here are your option' : 'no option'}</p>
+            <ol>
+                <li>Item one</li>
+                <li>Item two</li>
+                <li>Item three</li>
+                <li>Item four</li>
+            </ol>
+        </div>
+    );
+
+    const appRoot = document.getElementById('app')
+    ReactDOM.render(template, appRoot)
+
+    //Tutorial: 8. ES6 Aside const and let
+
+    //Challenge: 7. Conditional Rendering in JSX
 
