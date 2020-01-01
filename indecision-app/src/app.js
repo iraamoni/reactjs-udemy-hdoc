@@ -1,6 +1,6 @@
 // jsx = JavaScript XML
 
-    //Tutorial: 5. Exploring JSX
+    //Tutorial: 11. Events and Attributes
 
     var template = (
         <div>
@@ -14,138 +14,37 @@
             </ol>
         </div>
     );
-
-    const appRoot = document.getElementById('app')
-    ReactDOM.render(template, appRoot)
-
-    //Challenge: 5. Exploring JSX
-        //create a templateTwo const JSX expression
-        // div 
-        // h1 -> your name 
-        // p -> age: your age
-        // p -> location: your location
-        // render templateTwo instead of Template
     
+    let count = 0;
+    const addOne = function() {
+        count++ //or count + 1;
+        console.log('addOne', count)
+    }
+    const minusOne = function () {
+        console.log('minusOne')
+    }
+    const reset = function () {
+        console.log('reset')
+    }
+
     const templateTwo = (
         <div>
-            <h1>Suborna J</h1>
-            <p>Age: 27</p>
-            <p>Location: Turin, Italy</p>
+            <h1>count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>reset</button>
         </div>
     );
+
+    console.log(templateTwo)
 
     const appRoot = document.getElementById('app')
     ReactDOM.render(templateTwo, appRoot)
-
-    //Tutorial: 6. JSX Expressions
-
-    const user = {
-        name: 'iraamoni',
-        age: 27,
-        location: 'London, United Kingdom'
-    } // using object 
-
-    const templateThree = (
-        <div>
-            <h1>{user.name}</h1>
-            <p>Age: {user.age}</p>
-            <p>Location: {user.location}</p>
-        </div>
-    );
-
-    const userName = 'Iraamoni';
-    const userAge = 27; 
-    const userLocation = 'London, United Kingdom'
-    // using direct constables 
-
-    const templateThree = (
-        <div>
-            <h1>{userName}</h1>
-            <p>Age: {userAge}</p>
-            <p>Location: {userLocation}</p>
-        </div>
-    );
-
-    const appRoot = document.getElementById('app')
-    ReactDOM.render(templateThree, appRoot)
-
-
-    //Challenge: 6. JSX Expressions
-        //create app object: string/subtitle
-        // use title/subtitle
-        //render template
     
-    const userInfo = {
-        title: 'Suborna J',
-        subtitle: 'This is a short info about Suborna'
-    }
+    //Challenge: 11. Events and Attributes
+    //created the minus one button and function 
+    //created the reset button and function 
 
-    const templateFour = (
-        <div>
-            <h2>Title: {userInfo.title}</h2>
-            <h3>Subtitle: {userInfo.subtitle}</h3>
-        </div>
-    );
+   
+
     
-    const appRoot = document.getElementById('app')
-    ReactDOM.render(templateFour, appRoot)
-        
-    //Tutorial: 7. Conditional Rendering in JSX
-    
-    const userInfo = {
-        title: 'Suborna Jahan',
-        subtitle: 'This is a short info about Suborna',
-        job: 'UI/UX designer',
-        age: 27
-    }
-
-    function getSubtitle(subtitle) {
-        if (subtitle) {
-            return <h3>Subtitle: {subtitle}</h3>
-        } 
-    }
-
-    const templateFive = (
-        <div>
-            <h1>{userInfo.title ? userInfo.title : 'Anonymous'}</h1>
-            {getSubtitle(userInfo.subtitle)}
-            <h4>Job: {userInfo.job}</h4>
-            {(userInfo.age && userInfo.age >= 18) && <h5>Age: {userInfo.age}</h5>}
-        </div>
-    );
-    
-    const appRoot = document.getElementById('app')
-    ReactDOM.render(templateFive, appRoot)
-    
-    //Challenge: 7. Conditional Rendering in JSX
-    
-        //only render the subtitle (and p tag )if the subtitle exists -logical and operator 
-        // render new p tag - if options.length > 0 'here are your option' ' 'no option'
-
-    const app = {
-        title: 'Indecision App',
-        subtitle: 'this is the information of my app',
-        options: ['one', 'two']
-    }
-
-    const template = (
-        <div>
-            <h1>Indecision App</h1> 
-            {app.subtitle && <p>{app.subtitle}</p>}
-            <p>{app.options.length > 0 ? 'here are your option' : 'no option'}</p>
-            <ol>
-                <li>Item one</li>
-                <li>Item two</li>
-                <li>Item three</li>
-                <li>Item four</li>
-            </ol>
-        </div>
-    );
-
-    const appRoot = document.getElementById('app')
-    ReactDOM.render(template, appRoot)
-
-    //Tutorial: 8. ES6 Aside const and let
-
-    //Challenge: 7. Conditional Rendering in JSX
-

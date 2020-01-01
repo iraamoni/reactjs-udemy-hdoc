@@ -1,49 +1,90 @@
 'use strict';
 
-//Tutorial: 10. ES6 Aside Arrow Functions Part II
+// jsx = JavaScript XML
 
-var add = function add(a, b) {
-    console.log(arguments); //anonymous function can get arguments but arrow functions can't 
-    return a + b;
+//Tutorial: 11. Events and Attributes
+
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Indecision App'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'This is my app info'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item two'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item three'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item four'
+        )
+    )
+);
+
+var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
+};
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
+var reset = function reset() {
+    console.log('reset');
 };
 
-console.log(add(1, 45));
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
+    )
+);
 
-var user = {
-    name: 'Suborna Jahan',
-    cities: ['London', 'USA', 'Indonesia'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
+console.log(templateTwo);
 
-        var cityMessages = this.cities.map(function (city) {
-            return _this.name + 'has lived in ' + city;
-        }); //map creates a new array
-        return cityMessages;
+//Challenge: 11. Events and Attributes
+//created the minus one button and function 
+//created the reset button and function 
 
-        // this.cities.forEach((city) => {
-        //     console.log(this.name + ' has lived in ' + city) 
-        // })  // does not create a new array
-    }
-};
-console.log(user.printPlacesLived());
-
-//Challenge: 10. ES6 Aside Arrow Functions Part II
-
-//create a function called multiplier 
-//numbers -> array of numbers 
-//multiplyBy -> single number
-// multiply -> return a new array where the number have been multiplied 
-
-var multiplier = {
-    numbers: [2, 4, 6],
-    multiplyBy: 10,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
-    }
-};
-
-console.log(multiplier.multiply());
+var appRoot = document.getElementById('app');
+ReactDOM.render(templateTwo, appRoot);
