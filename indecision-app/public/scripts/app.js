@@ -2,89 +2,97 @@
 
 // jsx = JavaScript XML
 
-//Tutorial: 11. Events and Attributes
+//Tutorial: 14. Arrays in JSX [01.01.2020]
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Indecision App'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'This is my app info'
-    ),
-    React.createElement(
-        'ol',
+var app = {
+    title: 'Indecision App',
+    subtitle: 'this is the information of my app',
+    options: []
+};
+
+var onFromSubmit = function onFromSubmit(e) {
+    e.preventDefault();
+
+    var option = e.target.elements.option.value;
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+    }
+    render();
+};
+
+var removeAll = function removeAll() {
+    app.options = [];
+    render();
+};
+
+var render = function render() {
+    var template = React.createElement(
+        'div',
         null,
         React.createElement(
-            'li',
+            'h1',
             null,
-            'Item one'
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
         ),
         React.createElement(
-            'li',
+            'p',
             null,
-            'Item two'
+            app.options.length > 0 ? 'here is your option' : 'no options',
+            ' '
         ),
         React.createElement(
-            'li',
+            'p',
             null,
-            'Item three'
+            app.options.length
         ),
         React.createElement(
-            'li',
+            'button',
+            { onClick: removeAll },
+            'Remove All'
+        ),
+        app.options.map(function (option) {
+            return React.createElement(
+                'li',
+                { key: option },
+                option
+            );
+        }),
+        React.createElement(
+            'ol',
             null,
-            'Item four'
+            React.createElement(
+                'li',
+                null,
+                'Item one'
+            ),
+            React.createElement(
+                'li',
+                null,
+                'Item two'
+            )
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFromSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'add option'
+            )
         )
-    )
-);
+    );
 
-var count = 0;
-var addOne = function addOne() {
-    console.log('addOne');
-};
-var minusOne = function minusOne() {
-    console.log('minusOne');
-};
-var reset = function reset() {
-    console.log('reset');
+    var appRoot = document.getElementById('app');
+    ReactDOM.render(template, appRoot);
 };
 
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: reset },
-        'reset'
-    )
-);
+render();
 
-console.log(templateTwo);
-
-//Challenge: 11. Events and Attributes
-//created the minus one button and function 
-//created the reset button and function 
-
-var appRoot = document.getElementById('app');
-ReactDOM.render(templateTwo, appRoot);
+//Challenge: 14. Arrays in JSX [01.01.2020]

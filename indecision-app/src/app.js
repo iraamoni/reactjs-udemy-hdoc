@@ -1,49 +1,62 @@
 // jsx = JavaScript XML
 
-    //Tutorial: 11. Events and Attributes
+    //Tutorial: 14. Arrays in JSX [01.01.2020]
 
-    var template = (
-        <div>
-            <h1>Indecision App</h1> 
-            <p>This is my app info</p>
-            <ol>
-                <li>Item one</li>
-                <li>Item two</li>
-                <li>Item three</li>
-                <li>Item four</li>
-            </ol>
-        </div>
-    );
+    const app = {
+        title: 'Indecision App',
+        subtitle: 'this is the information of my app',
+        options: []
+    };
+
+    const onFromSubmit = (e) => {
+        e.preventDefault();
+
+        const option = e.target.elements.option.value;
+        if (option) {
+            app.options.push(option)
+            e.target.elements.option.value = ''
+        }
+        render();
+    };
     
-    let count = 0;
-    const addOne = function() {
-        count++ //or count + 1;
-        console.log('addOne', count)
-    }
-    const minusOne = function () {
-        console.log('minusOne')
-    }
-    const reset = function () {
-        console.log('reset')
-    }
+    const removeAll = () => {
+        app.options = [];
+        render();
+    };
 
-    const templateTwo = (
-        <div>
-            <h1>count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>reset</button>
-        </div>
-    );
+    const render = () => {
+        var template = (
+            <div>
+                <h1>{app.title}</h1> 
+                {app.subtitle && <p>{app.subtitle}</p>}
+                <p>{app.options.length > 0 ? 'here is your option' : 'no options'} </p>
+                <p>{app.options.length}</p>
+                <button onClick = {removeAll}>Remove All</button>
+                {
+                    app.options.map((option) => {
+                        return <li key = {option}>{option}</li>
+                    })
+                }
+                <ol>
+                    <li>Item one</li>
+                    <li>Item two</li>
+                </ol>
+                <form onSubmit = {onFromSubmit}>
+                    <input type='text' name='option'/>
+                    <button>add option</button>
+                </form>
+            </div>
+        );
 
-    console.log(templateTwo)
+        const appRoot = document.getElementById('app');
+        ReactDOM.render(template, appRoot);
+    };
 
-    const appRoot = document.getElementById('app')
-    ReactDOM.render(templateTwo, appRoot)
+    render()
+
     
-    //Challenge: 11. Events and Attributes
-    //created the minus one button and function 
-    //created the reset button and function 
+    //Challenge: 14. Arrays in JSX [01.01.2020]
+
 
    
 
