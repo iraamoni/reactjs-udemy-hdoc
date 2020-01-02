@@ -1,6 +1,6 @@
 // jsx = JavaScript XML
 
-    //Tutorial: 14. Arrays in JSX [01.01.2020]
+    //Tutorial: 15. Picking an Option [02.01.2020]
 
     const app = {
         title: 'Indecision App',
@@ -24,13 +24,19 @@
         render();
     };
 
+    const onMakeDecision = () => {
+        const randomNum = Math.floor(Math.random() * app.options.length);
+        const options = app.options[randomNum]
+        console.log(options)
+    };
+
     const render = () => {
         var template = (
             <div>
                 <h1>{app.title}</h1> 
                 {app.subtitle && <p>{app.subtitle}</p>}
                 <p>{app.options.length > 0 ? 'here is your option' : 'no options'} </p>
-                <p>{app.options.length}</p>
+                <button disabled = {app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
                 <button onClick = {removeAll}>Remove All</button>
                 {
                     app.options.map((option) => {
@@ -55,7 +61,7 @@
     render()
 
     
-    //Challenge: 14. Arrays in JSX [01.01.2020]
+    //Challenge: 15. Picking an Option [02.01.2020]
 
 
    

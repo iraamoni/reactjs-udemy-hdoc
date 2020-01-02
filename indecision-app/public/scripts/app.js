@@ -1,28 +1,14 @@
 'use strict';
 
-// jsx = JavaScript XML
-
-//Tutorial: 14. Arrays in JSX [01.01.2020]
-
+// 16. Build It Visibility Toggle [02.01.2020]
 var app = {
-    title: 'Indecision App',
-    subtitle: 'this is the information of my app',
-    options: []
+    title: 'Visibility toggle',
+    paragraph: 'hello world, how are you today '
 };
 
-var onFromSubmit = function onFromSubmit(e) {
-    e.preventDefault();
-
-    var option = e.target.elements.option.value;
-    if (option) {
-        app.options.push(option);
-        e.target.elements.option.value = '';
-    }
-    render();
-};
-
-var removeAll = function removeAll() {
-    app.options = [];
+var visibility = false;
+var toggle = function toggle() {
+    visibility = !visibility;
     render();
 };
 
@@ -35,56 +21,18 @@ var render = function render() {
             null,
             app.title
         ),
-        app.subtitle && React.createElement(
-            'p',
-            null,
-            app.subtitle
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length > 0 ? 'here is your option' : 'no options',
-            ' '
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length
-        ),
         React.createElement(
             'button',
-            { onClick: removeAll },
-            'Remove All'
+            { onClick: toggle },
+            visibility ? 'Hide Details' : 'Show Details'
         ),
-        app.options.map(function (option) {
-            return React.createElement(
-                'li',
-                { key: option },
-                option
-            );
-        }),
-        React.createElement(
-            'ol',
+        visibility && React.createElement(
+            'div',
             null,
             React.createElement(
-                'li',
+                'p',
                 null,
-                'Item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item two'
-            )
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFromSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'add option'
+                app.paragraph
             )
         )
     );
@@ -94,5 +42,3 @@ var render = function render() {
 };
 
 render();
-
-//Challenge: 14. Arrays in JSX [01.01.2020]
