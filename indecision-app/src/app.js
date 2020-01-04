@@ -1,68 +1,53 @@
-// jsx = JavaScript XML
-
-    //Tutorial: 15. Picking an Option [02.01.2020]
-
-    const app = {
-        title: 'Indecision App',
-        subtitle: 'this is the information of my app',
-        options: []
-    };
-
-    const onFromSubmit = (e) => {
-        e.preventDefault();
-
-        const option = e.target.elements.option.value;
-        if (option) {
-            app.options.push(option)
-            e.target.elements.option.value = ''
-        }
-        render();
-    };
-    
-    const removeAll = () => {
-        app.options = [];
-        render();
-    };
-
-    const onMakeDecision = () => {
-        const randomNum = Math.floor(Math.random() * app.options.length);
-        const options = app.options[randomNum]
-        console.log(options)
-    };
-
-    const render = () => {
-        var template = (
+class Header extends React.Component {
+    render() {
+        return (
             <div>
-                <h1>{app.title}</h1> 
-                {app.subtitle && <p>{app.subtitle}</p>}
-                <p>{app.options.length > 0 ? 'here is your option' : 'no options'} </p>
-                <button disabled = {app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
-                <button onClick = {removeAll}>Remove All</button>
-                {
-                    app.options.map((option) => {
-                        return <li key = {option}>{option}</li>
-                    })
-                }
-                <ol>
-                    <li>Item one</li>
-                    <li>Item two</li>
-                </ol>
-                <form onSubmit = {onFromSubmit}>
-                    <input type='text' name='option'/>
-                    <button>add option</button>
-                </form>
+                <h1>Indecision App</h1>
+                <h2>Put your life in the hands of a computer</h2>
             </div>
-        );
+        )
+    }
+}
 
-        const appRoot = document.getElementById('app');
-        ReactDOM.render(template, appRoot);
-    };
+class Action extends React.Component {
+    render() {
+        return (
+            <button>What should I do?</button>
+        )
+    }
+}
 
-    render()
+class Options extends React.Component {
+    render() {
+        return (
+            <h1>Options component here</h1>
+        )
+    }
+}
 
-    
-    //Challenge: 15. Picking an Option [02.01.2020]
+class AddOption extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>
+                    Add option component here
+                </h1>
+            </div>
+        )
+    }
+}
 
+const jsx = (
+    <div>
+        <Header/>
+        <Action/>
+        <Options/>
+        <AddOption/>
+    </div>
+)
+
+const appRoot = document.getElementById('app')
+ReactDOM.render(jsx, appRoot)
 
    
 
