@@ -21,8 +21,8 @@ class Action extends React.Component {
 
 const jsx = (
     <div>
-        <Header/>
-        <Action/>
+        <Header />
+        <Action />
     </div>
 )
 
