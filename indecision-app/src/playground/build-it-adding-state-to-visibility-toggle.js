@@ -36,3 +36,4 @@ class VisibilityToggle extends React.Component {
 
 const appRoot = document.getElementById('app')
 ReactDOM.render(<VisibilityToggle />, appRoot)
+
